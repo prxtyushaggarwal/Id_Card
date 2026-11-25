@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lovely Professional University - Student ID Card Replacement Services</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <header class="navbar-wrapper">
+    <div class="nav-inner">
+      <div class="brand-box" onclick="showLandingPage()">
+        <div class="lpu-logo-badge">
+          <span class="lpu-badge-txt">LPU</span>
+          <span class="lpu-badge-sub">PUNJAB</span>
+        </div>
+        <div class="brand-title-wrap">
+          <span class="uni-main-name">Lovely Professional University</span>
+          <span class="uni-sub-name">Student Welfare &bull; ID Card Services</span>
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="javascript:void(0)" class="nav-link active" onclick="showLandingPage()">Home</a>
+        <a href="javascript:void(0)" class="nav-link" onclick="openContactModal()">Contacts</a>
+        <a href="javascript:void(0)" class="nav-link" onclick="openPortalAtStep(4)">Track Card</a>
+      </nav>
+
+      <div class="nav-actions" id="navAuthBox">
+        <button type="button" class="login-btn" onclick="openLoginModal()" id="btnNavLogin">
+          <i class="fa-regular fa-circle-user"></i>
+          <span>UMS Log In</span>
+        </button>
+        <button type="button" class="quote-btn" onclick="openPortalAtStep(1)">
+          APPLY FOR REISSUE
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div id="landingView">
+    <main class="hero-section">
+      <div class="hero-content-grid">
+        <div class="hero-left">
+          <h1 class="hero-headline">
+            Student Identity<br>
+            Card Replacement<br>
+            Services
+          </h1>
+        </div>
+        <div class="hero-right">
+          <p class="hero-desc">
+            The official portal for Lovely Professional University students to apply for duplicate smart ID cards, complete automated document verification, settle reissue fees, and track printing and delivery across campus blocks in real-time.
+          </p>
+          <div class="hero-cta-group">
+            <button type="button" class="btn-hero-primary" onclick="openPortalAtStep(1)">
+              Apply for Reissue &rarr;
+            </button>
+            <button type="button" class="btn-hero-secondary" onclick="openPortalAtStep(4)">
+              <i class="fa-solid fa-location-crosshairs"></i> Track Existing ID
+            </button>
+          </div>
+
+          <div class="quick-lookup-box">
+            <div class="quick-lookup-badge">
+              <i class="fa-solid fa-bolt"></i>
+              <span>Quick ID Status Lookup</span>
+            </div>
+            <div class="quick-lookup-bar">
+              <i class="fa-solid fa-magnifying-glass lookup-glass"></i>
+              <input type="text" id="quickLookupInput" placeholder="Enter Reg No (e.g. 12204589)" maxlength="20">
+              <button type="button" class="btn-lookup-go" onclick="handleQuickLookup()">Track</button>
+            </div>
+            <span class="lookup-hint">Instant live tracking across Block 29, Block 30 & Block 32</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-image-container">
+        <img src="https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?auto=format&fit=crop&w=1600&q=80" alt="LPU Campus Modern Architecture" class="hero-banner-img">
+        <div class="hero-image-overlay">
+          <div class="overlay-badge">
+            <i class="fa-solid fa-shield-check"></i>
+            <span>Division of Student Welfare (DSW) &bull; Block 32 Counter 4</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="features-row">
+        <div class="feature-card" onclick="openPortalWithReason('Lost')">
+          <div class="f-icon lost"><i class="fa-solid fa-magnifying-glass-location"></i></div>
+          <h4>Lost Card Reissue</h4>
+          <p>Misplaced card on or off campus. Upload police missing complaint slip for instant clearance.</p>
+          <span class="f-link">Apply under Lost &rarr;</span>
+        </div>
+
+        <div class="feature-card" onclick="openPortalWithReason('Damaged')">
+          <div class="f-icon damaged"><i class="fa-solid fa-id-card-clip"></i></div>
+          <h4>Damaged Plastic Card</h4>
+          <p>Broken, cracked, or snapped RFID card. Upload photo and surrender old physical card upon pickup.</p>
+          <span class="f-link">Apply under Damaged &rarr;</span>
+        </div>
+
+        <div class="feature-card" onclick="openPortalWithReason('Defaced')">
+          <div class="f-icon defaced"><i class="fa-solid fa-barcode"></i></div>
+          <h4>Defaced or Chip Failure</h4>
+          <p>Faded student photo, scratched barcode, or smart turnstile tap failure. Get a freshly printed card.</p>
+          <span class="f-link">Apply under Defaced &rarr;</span>
+        </div>
+
+        <div class="feature-card" onclick="openPortalAtStep(4)">
+          <div class="f-icon track"><i class="fa-solid fa-route"></i></div>
+          <h4>Intra-Campus Tracking</h4>
+          <p>Track your card journey: Security Cell (Block 29) to Central Printing (Block 30) to DSW (Block 32).</p>
+          <span class="f-link">Check Status &rarr;</span>
+        </div>
+      </div>
+
+      <section class="home-info-section">
+        <div class="section-heading-wrap">
+          <span class="section-kicker">UNIVERSITY POLICIES & PROTOCOLS</span>
+          <h2 class="section-title">Smart ID Card Replacement Guidelines</h2>
+          <p class="section-desc">Key university regulations governing RFID security, fine structures, and document verification.</p>
+        </div>
+
+        <div class="policy-cards-grid">
+          <div class="policy-card">
+            <div class="p-card-header">
+              <div class="p-badge-icon"><i class="fa-solid fa-money-bill-transfer"></i></div>
+              <h3>Reissue Fee Slabs</h3>
+            </div>
+            <ul class="policy-list">
+              <li><strong>Standard Reissue:</strong> ₹300 fee with dispatch timeline of 3 to 5 working days.</li>
+              <li><strong>Express 24-Hr Print:</strong> ₹600 priority processing at Central Card Section (Block 30).</li>
+              <li><strong>Included Free:</strong> High-definition thermal laminate and pre-programmed 13.56MHz RFID chip.</li>
+            </ul>
+          </div>
+
+          <div class="policy-card">
+            <div class="p-card-header">
+              <div class="p-badge-icon"><i class="fa-solid fa-shield-halved"></i></div>
+              <h3>Instant Security Lockdown</h3>
+            </div>
+            <ul class="policy-list">
+              <li><strong>Turnstile Deactivation:</strong> Former RFID UID is blacklisted across campus gates within 2 hours of report.</li>
+              <li><strong>Library & Hostels:</strong> Prevents unauthorized entry to Uni-Mall, Central Library, and hostel turnstiles.</li>
+              <li><strong>Auto Sync:</strong> Hostel mess and attendance bio-punches sync to your new card automatically.</li>
+            </ul>
+          </div>
+
+          <div class="policy-card">
+            <div class="p-card-header">
+              <div class="p-badge-icon"><i class="fa-solid fa-hands-holding-circle"></i></div>
+              <h3>Collection & Surrender</h3>
+            </div>
+            <ul class="policy-list">
+              <li><strong>Physical Collection:</strong> Student must present official fee receipt at Block 32 (Counter 4).</li>
+              <li><strong>Damaged Cards:</strong> Old physical plastic card must be surrendered prior to receiving replacement.</li>
+              <li><strong>Third-Party Handover:</strong> Handover to friends or representatives is strictly prohibited by DSW.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="home-desks-section">
+        <div class="section-heading-wrap">
+          <span class="section-kicker">CAMPUS SERVICE HUBS</span>
+          <h2 class="section-title">Where Your Card Gets Processed</h2>
+          <p class="section-desc">Trace each campus department involved in the lifecycle of your replacement identity card.</p>
+        </div>
+
+        <div class="desks-grid">
+          <div class="desk-card">
+            <div class="desk-badge">BLOCK 29</div>
+            <h4>Security & Proctorial Cell</h4>
+            <p class="desk-role">Verification & Police Report Clearance</p>
+            <p class="desk-desc">Verifies student FIR slips, missing complaint affidavits, and issues clearance for duplicate printing.</p>
+            <div class="desk-timing"><i class="fa-regular fa-clock"></i> Mon-Sat: 09:00 AM - 05:00 PM</div>
+          </div>
+
+          <div class="desk-card">
+            <div class="desk-badge">BLOCK 30, RM 102</div>
+            <h4>Central Card Production</h4>
+            <p class="desk-role">Chip UID Encoding & Thermal Printing</p>
+            <p class="desk-desc">Dual-sided sublimation printing, biometric photo stamping, and cryptographic RFID key programming.</p>
+            <div class="desk-timing"><i class="fa-regular fa-clock"></i> Mon-Sat: 09:30 AM - 05:30 PM</div>
+          </div>
+
+          <div class="desk-card">
+            <div class="desk-badge">BLOCK 32, COUNTER 4</div>
+            <h4>Division of Student Welfare</h4>
+            <p class="desk-role">Student Helpdesk & Card Dispatch</p>
+            <p class="desk-desc">Final verification of payment slips, old card surrender collection, and card handover to the student.</p>
+            <div class="desk-timing"><i class="fa-regular fa-clock"></i> Mon-Sat: 09:00 AM - 05:00 PM</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="home-faq-section">
+        <div class="section-heading-wrap">
+          <span class="section-kicker">FREQUENTLY ASKED QUESTIONS</span>
+          <h2 class="section-title">Got Questions? Read Official Answers</h2>
+          <p class="section-desc">Clear guidance for students regarding ID card loss, fees, and campus protocol.</p>
+        </div>
+
+        <div class="faq-container">
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">
+              <span>How do I obtain a Police Report for a lost ID card?</span>
+              <i class="fa-solid fa-chevron-down faq-chevron"></i>
+            </div>
+            <div class="faq-answer">
+              <p>If you misplaced your card outside campus, you can generate an instant e-Lost Article Report on the Punjab Police Saanjh portal. If misplaced inside the campus premises, report to the Security & Proctor Office in Block 29 to receive an official lost certificate slip.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">
+              <span>Will my hostel gate punch and mess entry work on the new card?</span>
+              <i class="fa-solid fa-chevron-down faq-chevron"></i>
+            </div>
+            <div class="faq-answer">
+              <p>Yes. Once your replacement smart card is encoded in Block 30 Room 102, the new RFID UID automatically syncs with central hostel database servers within 3 hours. Your hostel turnstiles and mess meal allowance will seamlessly activate.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">
+              <span>What if my ID card is cracked, chipped, or barcode faded?</span>
+              <i class="fa-solid fa-chevron-down faq-chevron"></i>
+            </div>
+            <div class="faq-answer">
+              <p>Select the <strong>Damaged</strong> or <strong>Defaced</strong> category on Step 1. You do not need a police report. Simply upload a photo of the damaged card. Note that you must physically surrender the damaged card at Block 32 Counter 4 when collecting your new one.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">
+              <span>Can my roommate or friend collect my card with my fee receipt?</span>
+              <i class="fa-solid fa-chevron-down faq-chevron"></i>
+            </div>
+            <div class="faq-answer">
+              <p>No. Due to university security regulations, student identity cards are sensitive credentials. Physical collection requires the student's own biometric verification or physical signature at DSW Counter 4.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">
+              <span>I have end-term exams tomorrow morning. How can I get an urgent card?</span>
+              <i class="fa-solid fa-chevron-down faq-chevron"></i>
+            </div>
+            <div class="faq-answer">
+              <p>Choose the <strong>Urgent (24-Hour Express Print)</strong> option at Step 3. Your card request gets highest priority in the Block 30 queue and is dispatched to DSW Counter 4 within 24 working hours. Meanwhile, print your official fee receipt to carry as temporary exam clearance.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="portalView" style="display: none;">
+    <section class="stepper-top-bar">
+      <div class="stepper-track">
+        
+        <div class="step-pill active" id="pillStep1" onclick="navigateToStepIfAllowed(1)">
+          <div class="pill-circle"><i class="fa-regular fa-address-card"></i></div>
+          <div class="pill-text">
+            <span class="p-num">STEP 1</span>
+            <span class="p-name">Student Details</span>
+          </div>
+        </div>
+
+        <div class="track-connector" id="conn1"></div>
+
+        <div class="step-pill" id="pillStep2" onclick="navigateToStepIfAllowed(2)">
+          <div class="pill-circle"><i class="fa-regular fa-file-lines"></i></div>
+          <div class="pill-text">
+            <span class="p-num">STEP 2</span>
+            <span class="p-name">Doc Verification</span>
+          </div>
+        </div>
+
+        <div class="track-connector" id="conn2"></div>
+
+        <div class="step-pill" id="pillStep3" onclick="navigateToStepIfAllowed(3)">
+          <div class="pill-circle"><i class="fa-regular fa-credit-card"></i></div>
+          <div class="pill-text">
+            <span class="p-num">STEP 3</span>
+            <span class="p-name">Fee & Payment</span>
+          </div>
+        </div>
+
+        <div class="track-connector" id="conn3"></div>
+
+        <div class="step-pill" id="pillStep4" onclick="navigateToStepIfAllowed(4)">
+          <div class="pill-circle"><i class="fa-solid fa-location-dot"></i></div>
+          <div class="pill-text">
+            <span class="p-num">STEP 4</span>
+            <span class="p-name">LPU Live Tracking</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="portal-main-area">
+
+      <div class="step-panel" id="panelStep1">
+        <div class="panel-box">
+          <div class="panel-header-row">
+            <div class="panel-header-icon"><i class="fa-solid fa-user-pen"></i></div>
+            <div>
+              <h2>Student Identification & Reissue Application Form</h2>
+              <p>Please enter your registered LPU academic credentials and select the reason for duplicate ID issuance.</p>
+            </div>
+          </div>
+
+          <form id="reissueForm" novalidate>
+            <div class="input-grid">
+              
+              <div class="field-wrap">
+                <label for="regNo">LPU Registration Number <span class="req">*</span></label>
+                <div class="input-icon-box">
+                  <i class="fa-solid fa-hashtag"></i>
+                  <input type="text" id="regNo" placeholder="Enter 8-digit Reg No (e.g. 12204589)" maxlength="8">
+                </div>
+                <small class="field-error" id="errRegNo">Please enter a valid 8-digit registration number.</small>
+              </div>
+
+              <div class="field-wrap">
+                <label for="fullName">Student Full Name (As per UMS) <span class="req">*</span></label>
+                <div class="input-icon-box">
+                  <i class="fa-regular fa-user"></i>
+                  <input type="text" id="fullName" placeholder="e.g. Rahul Sharma">
+                </div>
+                <small class="field-error" id="errName">Please enter valid name (minimum 3 letters).</small>
+              </div>
+
+              <div class="field-wrap">
+                <label for="branch">School / Academic Branch <span class="req">*</span></label>
+                <div class="input-icon-box">
+                  <i class="fa-solid fa-building-columns"></i>
+                  <select id="branch">
+                    <option value="">-- Select School & Branch --</option>
+                    <option value="School of Computer Science & Engineering (B.Tech CSE)">School of Computer Science & Engg (B.Tech CSE)</option>
+                    <option value="CSE with AI & Machine Learning">CSE with AI & Machine Learning</option>
+                    <option value="CSE with Data Science">CSE with Data Science</option>
+                    <option value="Department of Electronics & Comm (ECE)">Department of Electronics & Comm (ECE)</option>
+                    <option value="School of Mechanical Engineering">School of Mechanical Engineering</option>
+                    <option value="Mittal School of Business (MBA)">Mittal School of Business (MBA)</option>
+                    <option value="School of Computer Applications (BCA/MCA)">School of Computer Applications (BCA/MCA)</option>
+                  </select>
+                </div>
+                <small class="field-error" id="errBranch">Please select your academic branch.</small>
+              </div>
+
+              <div class="field-wrap">
+                <label for="bloodGroup">Blood Group <span class="req">*</span></label>
+                <div class="input-icon-box">
+                  <i class="fa-solid fa-droplet"></i>
+                  <select id="bloodGroup">
+                    <option value="">-- Select Blood Group --</option>
+                    <option value="A+">A Positive (A+)</option>
+                    <option value="A-">A Negative (A-)</option>
+                    <option value="B+">B Positive (B+)</option>
+                    <option value="B-">B Negative (B-)</option>
+                    <option value="O+">O Positive (O+)</option>
+                    <option value="O-">O Negative (O-)</option>
+                    <option value="AB+">AB Positive (AB+)</option>
+                    <option value="AB-">AB Negative (AB-)</option>
+                  </select>
+                </div>
+                <small class="field-error" id="errBlood">Please pick your verified blood group.</small>
+              </div>
+
+              <div class="field-wrap">
+                <label for="email">LPU Student Email ID <span class="req">*</span></label>
+                <div class="input-icon-box">
+                  <i class="fa-regular fa-envelope"></i>
+                  <input type="email" id="email" placeholder="e.g. rahul.12204589@lpu.in">
+                </div>
+                <small class="field-error" id="errEmail">Please enter a valid student email address.</small>
+              </div>
+
+              <div class="field-wrap">
+                <label for="phone">Active Mobile Number <span class="req">*</span></label>
+                <div class="input-icon-box">
+                  <i class="fa-solid fa-phone"></i>
+                  <input type="tel" id="phone" placeholder="10-digit mobile number" maxlength="10">
+                </div>
+                <small class="field-error" id="errPhone">Please provide a valid 10-digit Indian phone number.</small>
+              </div>
+
+            </div>
+
+            <div class="reissue-reasons-block">
+              <label class="block-title">Reason for ID Card Reissue <span class="req">*</span></label>
+              
+              <div class="reason-cards-row">
+                <label class="reason-option-card">
+                  <input type="radio" name="reissueCategory" value="Lost" checked onchange="handleReasonChange()">
+                  <div class="opt-box">
+                    <div class="opt-icon red"><i class="fa-solid fa-search-location"></i></div>
+                    <div class="opt-desc">
+                      <strong>Lost Identity Card</strong>
+                      <p>Card misplaced or stolen on/off campus. Police lost report acknowledgment required.</p>
+                      <span class="badge-tag red">Police Report Mandatory</span>
+                    </div>
+                  </div>
+                </label>
+
+                <label class="reason-option-card">
+                  <input type="radio" name="reissueCategory" value="Damaged" onchange="handleReasonChange()">
+                  <div class="opt-box">
+                    <div class="opt-icon yellow"><i class="fa-solid fa-crutch"></i></div>
+                    <div class="opt-desc">
+                      <strong>Physically Damaged</strong>
+                      <p>Broken plastic, bent card, chipped edge or snap. Old damaged card must be surrendered.</p>
+                      <span class="badge-tag yellow">Old Card Surrender</span>
+                    </div>
+                  </div>
+                </label>
+
+                <label class="reason-option-card">
+                  <input type="radio" name="reissueCategory" value="Defaced" onchange="handleReasonChange()">
+                  <div class="opt-box">
+                    <div class="opt-icon blue"><i class="fa-solid fa-barcode"></i></div>
+                    <div class="opt-desc">
+                      <strong>Defaced / Chip Unreadable</strong>
+                      <p>Faded student photo, scratched barcode, or RFID smart turnstile tap failure.</p>
+                      <span class="badge-tag blue">Defaced Card Verification</span>
+                    </div>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <div class="declaration-row">
+              <input type="checkbox" id="studentUndertaking">
+              <label for="studentUndertaking">
+                I hereby declare that the information provided above is true to the best of my knowledge according to the LPU Code of Conduct. If my old card is found, I will return it immediately to the Security Office (Block 29).
+              </label>
+            </div>
+            <small class="field-error" id="errUndertaking">You must accept the LPU student undertaking declaration.</small>
+
+            <div class="panel-btn-row">
+              <button type="button" class="btn-clean" onclick="resetFormStep1()">Reset Form</button>
+              <button type="button" class="btn-next" onclick="submitStep1()">
+                Proceed to Document Verification <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="step-panel" id="panelStep2" style="display: none;">
+        <div class="panel-box">
+          <div class="panel-header-row">
+            <div class="panel-header-icon blue-bg"><i class="fa-solid fa-file-circle-check"></i></div>
+            <div>
+              <h2>Mandatory Document Checklist & Verification</h2>
+              <p>LPU Security & DSW compliance requirements based on selected reason: <strong id="lblActiveReason" class="status-pill-text">Lost</strong></p>
+            </div>
+          </div>
+
+          <div class="notice-callout" id="reasonNoticeCallout">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <div>
+              <h4 id="noticeHeading">Police Missing / Lost Report Requirement</h4>
+              <p id="noticeParagraph">As per LPU Security guidelines, students applying under Lost category must upload a valid Police Diary / Lost Article Report (LAR) acknowledgment slip or Online Missing Complaint receipt.</p>
+            </div>
+          </div>
+
+          <div class="checklist-section">
+            <h3>1. Mandatory Document Verification Checklist</h3>
+            <div class="chk-list-container" id="chkListContainer"></div>
+          </div>
+
+          <div class="upload-section">
+            <h3>2. Upload Supporting Documents</h3>
+            <div class="drop-zone-box" id="dropZoneBox">
+              <input type="file" id="supportDocInput" accept=".pdf,.png,.jpg,.jpeg">
+              <i class="fa-solid fa-cloud-arrow-up cloud-icon"></i>
+              <h4>Drag & Drop file here, or <span class="browse-txt">Browse Local File</span></h4>
+              <p>Supported formats: PDF, JPG, PNG (Max 2MB)</p>
+            </div>
+
+            <div class="uploaded-card" id="uploadedDocCard" style="display: none;">
+              <div class="u-meta">
+                <i class="fa-solid fa-file-pdf f-icon"></i>
+                <div>
+                  <strong id="uFileName">Police_NCR_Report.pdf</strong>
+                  <span id="uFileSize">1.2 MB</span>
+                </div>
+              </div>
+              <span class="verified-tag"><i class="fa-solid fa-circle-check"></i> Security Verified</span>
+            </div>
+          </div>
+
+          <div class="clearance-box" id="clearanceBox">
+            <div class="clearance-circle" id="clearanceCircle">
+              <i class="fa-solid fa-clock-rotate-left"></i>
+            </div>
+            <div>
+              <h4 id="clearanceTitle">Verification Status: Pending Documents</h4>
+              <p id="clearanceDesc">Please upload your supporting document and acknowledge the mandatory checklist items above.</p>
+            </div>
+          </div>
+
+          <div class="panel-btn-row">
+            <button type="button" class="btn-clean" onclick="switchStep(1)">
+              <i class="fa-solid fa-arrow-left"></i> Back to Student Details
+            </button>
+            <button type="button" class="btn-next" id="btnStep2Submit" onclick="submitStep2()" disabled>
+              Proceed to Fee & Payment <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-panel" id="panelStep3" style="display: none;">
+        <div class="panel-box">
+          <div class="panel-header-row">
+            <div class="panel-header-icon yellow-bg"><i class="fa-solid fa-calculator"></i></div>
+            <div>
+              <h2>Reissue Fee & Payment Details</h2>
+              <p>Choose your processing priority (Standard vs Urgent 24-Hour) and complete fee settlement.</p>
+            </div>
+          </div>
+
+          <div class="fee-split-grid">
+            <div class="fee-controls">
+              <h3><i class="fa-solid fa-sliders"></i> 1. Select Processing Mode</h3>
+
+              <div class="proc-mode-cards">
+                <label class="proc-card">
+                  <input type="radio" name="procSpeed" value="standard" checked onchange="recalculateBill()">
+                  <div class="p-card-body">
+                    <div class="p-head">
+                      <strong>Standard Processing</strong>
+                      <span class="p-cost">₹300</span>
+                    </div>
+                    <p>Regular batch printing cycle. Estimated ready for collection in 3 to 5 working days at Block 32.</p>
+                    <span class="p-time-badge"><i class="fa-regular fa-clock"></i> 3 - 5 Working Days</span>
+                  </div>
+                </label>
+
+                <label class="proc-card">
+                  <input type="radio" name="procSpeed" value="urgent" onchange="recalculateBill()">
+                  <div class="p-card-body">
+                    <div class="p-head">
+                      <strong>Urgent 24-Hour Express</strong>
+                      <span class="p-cost">₹600</span>
+                    </div>
+                    <p>High priority queue directly sent to Central Card Printing Section (Block 30). Ready within 24 hours.</p>
+                    <span class="p-time-badge urgent"><i class="fa-solid fa-bolt"></i> Ready in 24 Hours</span>
+                  </div>
+                </label>
+              </div>
+
+              <h3 style="margin-top: 24px;"><i class="fa-solid fa-shield-halved"></i> 2. Optional Campus Accessories & Add-ons</h3>
+              <div class="addons-container">
+                <label class="addon-row">
+                  <input type="checkbox" id="chkLanyard" onchange="recalculateBill()">
+                  <div class="addon-text">
+                    <strong>LPU Branded Lanyard & Heavy-Duty Card Holder</strong>
+                    <span>RFID scratch-shield protective casing (+ ₹50)</span>
+                  </div>
+                  <span class="addon-price">+ ₹50</span>
+                </label>
+
+                <label class="addon-row">
+                  <input type="checkbox" id="chkGateSlip" onchange="recalculateBill()">
+                  <div class="addon-text">
+                    <strong>Emergency Temporary Paper Pass Slip</strong>
+                    <span>Allows turnstile gate entry while replacement is in printing (+ ₹40)</span>
+                  </div>
+                  <span class="addon-price">+ ₹40</span>
+                </label>
+              </div>
+
+              <h3 style="margin-top: 24px;"><i class="fa-solid fa-wallet"></i> 3. Select Payment Mode</h3>
+              <div class="pay-method-tabs">
+                <label class="pay-btn active" id="tabUPI" onclick="changePaymentTab('UPI')">
+                  <i class="fa-brands fa-google-pay"></i> UPI / QR Code
+                </label>
+                <label class="pay-btn" id="tabCard" onclick="changePaymentTab('Card')">
+                  <i class="fa-regular fa-credit-card"></i> Debit / Card
+                </label>
+                <label class="pay-btn" id="tabUMS" onclick="changePaymentTab('UMS')">
+                  <i class="fa-solid fa-university"></i> LPU UMS Account
+                </label>
+              </div>
+
+              <div class="pay-tab-details" id="payTabContent">
+                <div id="contentUPI" class="tab-pane">
+                  <div class="upi-box-inner">
+                    <div class="qr-box"><i class="fa-solid fa-qrcode"></i></div>
+                    <div>
+                      <strong>Scan to Pay via UPI</strong>
+                      <p class="small-text">UPI ID: <code>lpu.dsw.payments@icici</code></p>
+                      <span class="instant-tag"><i class="fa-solid fa-circle-check"></i> Instant Payment Confirmation</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="contentCard" class="tab-pane" style="display: none;">
+                  <div class="card-inputs-grid">
+                    <div>
+                      <label>Card Number</label>
+                      <input type="text" value="4532 8920 1192 4021" readonly>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                      <div style="flex:1;">
+                        <label>Expiry</label>
+                        <input type="text" value="12/28" readonly>
+                      </div>
+                      <div style="flex:1;">
+                        <label>CVV</label>
+                        <input type="password" value="741" readonly>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="contentUMS" class="tab-pane" style="display: none;">
+                  <p>Debit directly from LPU Student Caution Deposit or University Account.</p>
+                  <div class="ums-balance-box">UMS Account Balance: <strong>₹2,450.00</strong></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="fee-summary-card">
+              <div class="summary-wrapper">
+                <h4><i class="fa-solid fa-receipt"></i> Reissue Fee Breakdown</h4>
+                <div class="summary-line">
+                  <span>Student Roll / Reg No:</span>
+                  <strong id="bRegNo">12204589</strong>
+                </div>
+                <div class="summary-line">
+                  <span>Student Name:</span>
+                  <strong id="bName">Rahul Sharma</strong>
+                </div>
+                <div class="summary-line">
+                  <span>Reason for Reissue:</span>
+                  <strong id="bReason" class="text-orange">Lost</strong>
+                </div>
+
+                <hr class="dash-divider">
+
+                <div class="summary-line">
+                  <span id="bProcLabel">Standard Processing Fee</span>
+                  <span id="bProcPrice">₹300.00</span>
+                </div>
+
+                <div class="summary-line" id="bLanyardRow" style="display: none;">
+                  <span>LPU Lanyard & Holder</span>
+                  <span>₹50.00</span>
+                </div>
+
+                <div class="summary-line" id="bSlipRow" style="display: none;">
+                  <span>Temporary Entry Slip</span>
+                  <span>₹40.00</span>
+                </div>
+
+                <div class="summary-line text-muted">
+                  <span>University GST (18% inclusive)</span>
+                  <span>Included</span>
+                </div>
+
+                <hr class="dash-divider">
+
+                <div class="total-summary-row">
+                  <span>Total Payable Amount</span>
+                  <span class="total-big-val" id="bTotal">₹300.00</span>
+                </div>
+
+                <button type="button" class="btn-pay-now" id="btnPayAction" onclick="processPayment()">
+                  <i class="fa-solid fa-lock"></i> Pay & Authorize Reissue (₹<span id="bPayVal">300</span>)
+                </button>
+                <p class="safe-text"><i class="fa-solid fa-shield"></i> Secure University Payment Gateway</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel-btn-row">
+            <button type="button" class="btn-clean" onclick="switchStep(2)">
+              <i class="fa-solid fa-arrow-left"></i> Back to Documents
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-panel" id="panelStep4" style="display: none;">
+        <div class="panel-box">
+          
+          <div class="panel-header-row">
+            <div class="panel-header-icon green-bg"><i class="fa-regular fa-compass"></i></div>
+            <div>
+              <h2>Real-Time LPU Campus Dispatch & Pickup Tracker</h2>
+              <p>Track your student ID reissue order stage by stage across campus departments and buildings.</p>
+            </div>
+          </div>
+
+          <div class="tracker-summary-strip">
+            <div class="strip-item">
+              <span class="strip-label">APPLICATION REFERENCE ID</span>
+              <strong class="strip-val" id="tRefId">LPU-ID-2026-04589</strong>
+            </div>
+
+            <div class="strip-item">
+              <span class="strip-label">CURRENT STATUS</span>
+              <strong class="strip-val text-blue" id="tStatus">Smart Card Encoding & Thermal Printing</strong>
+            </div>
+
+            <div class="strip-item">
+              <span class="strip-label">ESTIMATED CAMPUS PICKUP</span>
+              <strong class="strip-val text-orange" id="tEstimated">Within 24 Hours (Express Print)</strong>
+            </div>
+
+            <div class="strip-item">
+              <span class="strip-label">PICKUP LOCATION</span>
+              <strong class="strip-val text-brown" id="tLocation">Central Card Section (Block 30, Room 102)</strong>
+            </div>
+          </div>
+
+          <div class="tracker-grid-content">
+            
+            <div class="timeline-column-side">
+              <div class="timeline-top-action">
+                <h3><i class="fa-solid fa-route"></i> Campus Lifecycle Timeline</h3>
+                <button type="button" class="btn-simulate-stage" onclick="simulateNextStage()">
+                  <i class="fa-solid fa-forward-step"></i> Simulate Next Campus Stage
+                </button>
+              </div>
+
+              <div class="timeline-tree">
+                
+                <div class="tree-node completed" id="stageNode1">
+                  <div class="tree-bullet"><i class="fa-solid fa-check"></i></div>
+                  <div class="tree-content">
+                    <div class="tree-row">
+                      <h4>Application & Reason Submitted</h4>
+                      <span class="tree-time" id="tTime1">10:15 AM</span>
+                    </div>
+                    <p>Application received through LPU UMS Portal. Reason logged under student file.</p>
+                    <span class="tree-dept"><i class="fa-regular fa-building"></i> Online UMS Portal</span>
+                  </div>
+                </div>
+
+                <div class="tree-node completed" id="stageNode2">
+                  <div class="tree-bullet"><i class="fa-solid fa-check"></i></div>
+                  <div class="tree-content">
+                    <div class="tree-row">
+                      <h4>Police Report & Checklist Cleared</h4>
+                      <span class="tree-time" id="tTime2">10:45 AM</span>
+                    </div>
+                    <p>Document checklist verified by LPU Security Wing. Reissue authorization granted.</p>
+                    <span class="tree-dept"><i class="fa-regular fa-building"></i> Security & Proctor Office (Block 29)</span>
+                  </div>
+                </div>
+
+                <div class="tree-node active" id="stageNode3">
+                  <div class="tree-bullet"><i class="fa-solid fa-print"></i></div>
+                  <div class="tree-content">
+                    <div class="tree-row">
+                      <h4>Smart Card Encoding & Thermal Printing</h4>
+                      <span class="tree-time active-time" id="tTime3">Active Now</span>
+                    </div>
+                    <p>RFID chip UID programmed with student roll number, high-resolution photo laminated.</p>
+                    <span class="tree-dept"><i class="fa-regular fa-building"></i> Central Card Section (Block 30, Room 102)</span>
+                  </div>
+                </div>
+
+                <div class="tree-node pending" id="stageNode4">
+                  <div class="tree-bullet"><i class="fa-solid fa-van-shuttle"></i></div>
+                  <div class="tree-content">
+                    <div class="tree-row">
+                      <h4>Dispatched via Intra-Campus Courier</h4>
+                      <span class="tree-time" id="tTime4">Pending</span>
+                    </div>
+                    <p>Transferred from printing facility to student service center counter.</p>
+                    <span class="tree-dept"><i class="fa-regular fa-building"></i> Transit to Uni-Mall / Block 32</span>
+                  </div>
+                </div>
+
+                <div class="tree-node pending" id="stageNode5">
+                  <div class="tree-bullet"><i class="fa-solid fa-box-open"></i></div>
+                  <div class="tree-content">
+                    <div class="tree-row">
+                      <h4>Ready for Student Collection</h4>
+                      <span class="tree-time" id="tTime5">Pending</span>
+                    </div>
+                    <p>Carry your payment slip or registration ID to collect from DSW Desk Counter 4.</p>
+                    <span class="tree-dept"><i class="fa-regular fa-building"></i> Division of Student Welfare (Block 32)</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="preview-column-side">
+              <div class="id-preview-header">
+                <h3><i class="fa-regular fa-id-badge"></i> Generated Digital Student ID Preview</h3>
+                <p>Interactive preview of the replacement smart card being printed:</p>
+              </div>
+
+              <div class="lpu-id-card-visual">
+                <div class="card-top-stripe">
+                  <div>
+                    <span class="c-title">LOVELY PROFESSIONAL UNIVERSITY</span>
+                    <span class="c-sub">Phagwara, Punjab (India)</span>
+                  </div>
+                  <div class="c-badge">LPU</div>
+                </div>
+
+                <div class="card-core-body">
+                  <div class="student-photo-col">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="Student Photo" class="id-photo-img">
+                    <div class="id-chip-icon"><i class="fa-solid fa-microchip"></i></div>
+                  </div>
+
+                  <div class="student-info-col">
+                    <div class="id-row">
+                      <span class="id-label">NAME</span>
+                      <strong class="id-val" id="idCardName">RAHUL SHARMA</strong>
+                    </div>
+
+                    <div class="id-row">
+                      <span class="id-label">REG NO.</span>
+                      <strong class="id-val highlight-orange" id="idCardReg">12204589</strong>
+                    </div>
+
+                    <div class="id-row">
+                      <span class="id-label">PROGRAM</span>
+                      <strong class="id-val small" id="idCardBranch">School of Computer Science & Engineering (B.Tech CSE)</strong>
+                    </div>
+
+                    <div class="id-tri-row">
+                      <div>
+                        <span class="id-label">BLOOD GRP</span>
+                        <strong class="id-val text-red" id="idCardBlood">B+</strong>
+                      </div>
+                      <div>
+                        <span class="id-label">VALID THRU</span>
+                        <strong class="id-val">2027</strong>
+                      </div>
+                      <div>
+                        <span class="id-label">ISSUANCE</span>
+                        <span class="duplicate-pill">DUPLICATE</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card-bottom-bar">
+                  <div class="barcode-lines">||| | ||||| || |||| || |||||| ||||| ||| |||| ||||</div>
+                  <div class="sign-text">Registrar / DSW</div>
+                </div>
+              </div>
+
+              <div class="guidelines-card-box">
+                <h4><i class="fa-solid fa-circle-info"></i> LPU Campus Collection Guidelines</h4>
+                <ul>
+                  <li><strong>Pickup Venue:</strong> Block 32 (DSW Center), Counter No. 4, Ground Floor.</li>
+                  <li><strong>Timings:</strong> Monday to Saturday, 09:00 AM - 05:00 PM.</li>
+                  <li><strong>Documents to Carry:</strong> Show printed fee receipt or UMS app confirmation.</li>
+                  <li>If reason was <em>Damaged/Defaced</em>, you must surrender the old physical card at the counter.</li>
+                </ul>
+
+                <button type="button" class="btn-print-receipt" onclick="window.print()">
+                  <i class="fa-solid fa-print"></i> Print Official LPU Fee Receipt
+                </button>
+                <button type="button" class="btn-return-home" onclick="showLandingPage()">
+                  <i class="fa-solid fa-house"></i> Return to Homepage
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="lpuLoginModal" onclick="closeLoginModalOutside(event)">
+    <div class="modal-ums-card">
+      <div class="modal-ums-head">
+        <div class="m-head-left">
+          <div class="ums-logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+          <div>
+            <h3>LPU UMS Student Authentication</h3>
+            <p>University Management System &bull; Single Sign-On</p>
+          </div>
+        </div>
+        <button type="button" class="btn-modal-close" onclick="closeLoginModal()">&times;</button>
+      </div>
+
+      <div class="modal-ums-body">
+        <div class="ums-demo-callout">
+          <span class="demo-tag"><i class="fa-solid fa-lightbulb"></i> One-Click Demo Profiles</span>
+          <div class="demo-chips-row">
+            <button type="button" class="btn-demo-chip" onclick="quickFillDemoLogin('12204589')">
+              <i class="fa-solid fa-user-check"></i> Rahul Sharma (B.Tech CSE)
+            </button>
+            <button type="button" class="btn-demo-chip" onclick="quickFillDemoLogin('12119045')">
+              <i class="fa-solid fa-user-check"></i> Aman Verma (MBA)
+            </button>
+          </div>
+        </div>
+
+        <div class="ums-input-group">
+          <label for="umsRegInput">LPU Registration Number</label>
+          <div class="ums-input-field">
+            <i class="fa-regular fa-id-card"></i>
+            <input type="text" id="umsRegInput" placeholder="Enter 8-digit Reg No (e.g. 12204589)" value="12204589" maxlength="8">
+          </div>
+        </div>
+
+        <div class="ums-input-group">
+          <label for="umsPasswordInput">UMS Password</label>
+          <div class="ums-input-field">
+            <i class="fa-solid fa-key"></i>
+            <input type="password" id="umsPasswordInput" placeholder="Enter UMS password" value="••••••••••••">
+          </div>
+        </div>
+
+        <div class="ums-meta-row">
+          <label class="remember-label">
+            <input type="checkbox" checked> Remember session
+          </label>
+          <a href="javascript:void(0)" class="forgot-link" onclick="alert('Password reset link has been dispatched to student registered mobile via LPU UMS SMS Gateway.')">Forgot Password?</a>
+        </div>
+
+        <button type="button" class="btn-ums-submit" onclick="submitUmsLogin()">
+          <i class="fa-solid fa-right-to-bracket"></i> Sign In to UMS Portal
+        </button>
+
+        <p class="ums-secure-note">
+          <i class="fa-solid fa-shield-halved"></i> Protected by LPU Central Directory Services
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="dswContactModal" onclick="closeContactModalOutside(event)">
+    <div class="modal-contact-card">
+      <div class="modal-contact-head">
+        <div class="m-head-left">
+          <div class="dsw-icon-badge"><i class="fa-solid fa-building-flag"></i></div>
+          <div>
+            <h3>Division of Student Welfare (DSW)</h3>
+            <p>Lovely Professional University &bull; Official Contacts</p>
+          </div>
+        </div>
+        <button type="button" class="btn-modal-close" onclick="closeContactModal()">&times;</button>
+      </div>
+
+      <div class="modal-contact-body">
+        <div class="contact-card-item highlight-box">
+          <div class="c-item-icon"><i class="fa-solid fa-phone-volume"></i></div>
+          <div>
+            <strong>DSW Student ID Card Helpline</strong>
+            <p class="phone-num"><a href="tel:+911824520100">+91-1824-520100</a> / Ext: 3204</p>
+            <span class="c-note">Counter No. 4, Ground Floor, Block 32 (Uni-Mall)</span>
+          </div>
+        </div>
+
+        <div class="contact-card-item">
+          <div class="c-item-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <div>
+            <strong>Security & Proctorial Cell (Lost & Missing ID)</strong>
+            <p class="phone-num"><a href="tel:+911824517000">+91-1824-517000</a> / Ext: 2901, 2902</p>
+            <span class="c-note">Block 29 (Near University Central Library Gate)</span>
+          </div>
+        </div>
+
+        <div class="contact-card-item">
+          <div class="c-item-icon"><i class="fa-solid fa-print"></i></div>
+          <div>
+            <strong>Central Smart Card Printing Section</strong>
+            <p class="phone-num"><a href="tel:+911824404404">+91-1824-404404</a> / Ext: 3012</p>
+            <span class="c-note">Block 30, Room 102 (Card Production & RFID Encoding)</span>
+          </div>
+        </div>
+
+        <div class="contact-card-item">
+          <div class="c-item-icon"><i class="fa-solid fa-envelope"></i></div>
+          <div>
+            <strong>Official Support Email</strong>
+            <p class="phone-num"><a href="mailto:dsw@lpu.co.in">dsw@lpu.co.in</a> | <a href="mailto:idcell@lpu.co.in">idcell@lpu.co.in</a></p>
+            <span class="c-note">Response within 24 working hours for student queries</span>
+          </div>
+        </div>
+
+        <div class="contact-timing-strip">
+          <i class="fa-regular fa-clock"></i>
+          <span><strong>Office Timings:</strong> Monday to Saturday, 09:00 AM - 05:00 PM (Closed on University Holidays)</span>
+        </div>
+      </div>
+
+      <div class="modal-contact-footer">
+        <button type="button" class="btn-clean" onclick="closeContactModal()">Close Window</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <strong>Lovely Professional University</strong>
+        <p>Jalandhar - Delhi G.T. Road, Phagwara, Punjab (India) - 144411</p>
+      </div>
+      <div class="footer-col text-right">
+        <p>Division of Student Welfare (DSW) &bull; ID Card Services &bull; Ph: +91-1824-520100</p>
+        <span class="footer-note">&copy; 2026 Lovely Professional University. All Rights Reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
