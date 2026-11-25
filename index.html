@@ -30,16 +30,6 @@
         <a href="javascript:void(0)" class="nav-link" onclick="openContactModal()">Contacts</a>
         <a href="javascript:void(0)" class="nav-link" onclick="openPortalAtStep(4)">Track Card</a>
       </nav>
-
-      <div class="nav-actions" id="navAuthBox">
-        <button type="button" class="login-btn" onclick="openLoginModal()" id="btnNavLogin">
-          <i class="fa-regular fa-circle-user"></i>
-          <span>UMS Log In</span>
-        </button>
-        <button type="button" class="quote-btn" onclick="openPortalAtStep(1)">
-          APPLY FOR REISSUE
-        </button>
-      </div>
     </div>
   </header>
 
@@ -60,9 +50,6 @@
           <div class="hero-cta-group">
             <button type="button" class="btn-hero-primary" onclick="openPortalAtStep(1)">
               Apply for Reissue &rarr;
-            </button>
-            <button type="button" class="btn-hero-secondary" onclick="openPortalAtStep(4)">
-              <i class="fa-solid fa-location-crosshairs"></i> Track Existing ID
             </button>
           </div>
 
@@ -888,66 +875,6 @@
         </div>
       </div>
 
-    </div>
-  </div>
-
-  <div class="modal-backdrop" id="lpuLoginModal" onclick="closeLoginModalOutside(event)">
-    <div class="modal-ums-card">
-      <div class="modal-ums-head">
-        <div class="m-head-left">
-          <div class="ums-logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-          <div>
-            <h3>LPU UMS Student Authentication</h3>
-            <p>University Management System &bull; Single Sign-On</p>
-          </div>
-        </div>
-        <button type="button" class="btn-modal-close" onclick="closeLoginModal()">&times;</button>
-      </div>
-
-      <div class="modal-ums-body">
-        <div class="ums-demo-callout">
-          <span class="demo-tag"><i class="fa-solid fa-lightbulb"></i> One-Click Demo Profiles</span>
-          <div class="demo-chips-row">
-            <button type="button" class="btn-demo-chip" onclick="quickFillDemoLogin('12204589')">
-              <i class="fa-solid fa-user-check"></i> Rahul Sharma (B.Tech CSE)
-            </button>
-            <button type="button" class="btn-demo-chip" onclick="quickFillDemoLogin('12119045')">
-              <i class="fa-solid fa-user-check"></i> Aman Verma (MBA)
-            </button>
-          </div>
-        </div>
-
-        <div class="ums-input-group">
-          <label for="umsRegInput">LPU Registration Number</label>
-          <div class="ums-input-field">
-            <i class="fa-regular fa-id-card"></i>
-            <input type="text" id="umsRegInput" placeholder="Enter 8-digit Reg No (e.g. 12204589)" value="12204589" maxlength="8">
-          </div>
-        </div>
-
-        <div class="ums-input-group">
-          <label for="umsPasswordInput">UMS Password</label>
-          <div class="ums-input-field">
-            <i class="fa-solid fa-key"></i>
-            <input type="password" id="umsPasswordInput" placeholder="Enter UMS password" value="••••••••••••">
-          </div>
-        </div>
-
-        <div class="ums-meta-row">
-          <label class="remember-label">
-            <input type="checkbox" checked> Remember session
-          </label>
-          <a href="javascript:void(0)" class="forgot-link" onclick="alert('Password reset link has been dispatched to student registered mobile via LPU UMS SMS Gateway.')">Forgot Password?</a>
-        </div>
-
-        <button type="button" class="btn-ums-submit" onclick="submitUmsLogin()">
-          <i class="fa-solid fa-right-to-bracket"></i> Sign In to UMS Portal
-        </button>
-
-        <p class="ums-secure-note">
-          <i class="fa-solid fa-shield-halved"></i> Protected by LPU Central Directory Services
-        </p>
-      </div>
     </div>
   </div>
 
