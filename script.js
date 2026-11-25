@@ -62,15 +62,34 @@ function closeContactModalOutside(e) {
   }
 }
 
+function updateNavActive(activeId) {
+  const ids = ['navLinkHome', 'navLinkContacts', 'navLinkTrack'];
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.remove('active');
+  });
+  if (activeId) {
+    const current = document.getElementById(activeId);
+    if (current) current.classList.add('active');
+  }
+}
+
 function showLandingPage() {
   document.getElementById('portalView').style.display = 'none';
   document.getElementById('landingView').style.display = 'block';
+  updateNavActive('navLinkHome');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function openPortalAtStep(stepNum) {
   document.getElementById('landingView').style.display = 'none';
   document.getElementById('portalView').style.display = 'block';
+
+  if (stepNum === 4) {
+    updateNavActive('navLinkTrack');
+  } else {
+    updateNavActive('');
+  }
 
   if (stepNum > maxUnlockedStep) {
     switchStep(maxUnlockedStep);

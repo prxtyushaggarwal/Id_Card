@@ -15,10 +15,7 @@
   <header class="navbar-wrapper">
     <div class="nav-inner">
       <div class="brand-box" onclick="showLandingPage()">
-        <div class="lpu-logo-badge">
-          <span class="lpu-badge-txt">LPU</span>
-          <span class="lpu-badge-sub">PUNJAB</span>
-        </div>
+        <img src="lpu-logo.png" alt="LPU Logo" class="lpu-nav-logo">
         <div class="brand-title-wrap">
           <span class="uni-main-name">Lovely Professional University</span>
           <span class="uni-sub-name">Student Welfare &bull; ID Card Services</span>
@@ -26,10 +23,12 @@
       </div>
 
       <nav class="nav-links">
-        <a href="javascript:void(0)" class="nav-link active" onclick="showLandingPage()">Home</a>
-        <a href="javascript:void(0)" class="nav-link" onclick="openContactModal()">Contacts</a>
-        <a href="javascript:void(0)" class="nav-link" onclick="openPortalAtStep(4)">Track Card</a>
+        <a href="javascript:void(0)" class="nav-link active" id="navLinkHome" onclick="showLandingPage()">Home</a>
+        <a href="javascript:void(0)" class="nav-link" id="navLinkContacts" onclick="openContactModal()">Contacts</a>
+        <a href="javascript:void(0)" class="nav-link" id="navLinkTrack" onclick="openPortalAtStep(4)">Track Card</a>
       </nav>
+
+      <div class="nav-right-placeholder"></div>
     </div>
   </header>
 
